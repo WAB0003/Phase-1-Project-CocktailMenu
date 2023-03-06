@@ -6,7 +6,7 @@ The webpage displayed by the code herein is an online menu for cocktails. Upon o
 
 * Cocktail API Address: https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita 
 
-
+![]
 
 # How to use Project
 "as a user i can"
