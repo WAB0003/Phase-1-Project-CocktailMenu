@@ -22,7 +22,4 @@ drinkImg.alt = drinkObj.strDrink
 drinkImg.width = 200
 //append drink image to the drink Menu
 drinkList.append(drinkImg)
-
-
-
 }
