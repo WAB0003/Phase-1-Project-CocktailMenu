@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Margarita Drinks</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="logo">
+        <h1>Margarita Menu</h1>
+      </div>
+  
+      <div id="drink-list">
+      </div>
+  
+      <div class="drinkInfo">
+        <div id="detailed-info">
+          <p id="name">Drink Name</p>
+          <img
+            id="image"
+            src=""
+            alt="Drink Name"
+            />
+          <h4 id="add-ingredients">Add A Drink</h4>
+
+          <form id="drink-form">
+            <input type="text" placeholder="Enter drink" id="drink" name="drink" />
+            <input type="submit" value="Add drink" />
+          </form>
+          <button id="reset-btn">Reset Drink</button>
+        </div>
+
+    <script src="index.js"></script>
 </body>
 </html>
