@@ -16,9 +16,9 @@ const drinkList = document.querySelector("#drink-list")
         // console.log(drinkObj)
         
         //creating a variable that takes image info from object
-        const drinkListDiv = document.createElement("div")
-        drinkListDiv.classList = "drinks"
-        drinkListDiv.id = `d${drinkObj.idDrink}`
+        const drinkListSpan = document.createElement("span")
+        drinkListSpan.classList = "drinks"
+        drinkListSpan.id = `d${drinkObj.idDrink}`
 
         drinkImg = document.createElement("img")
         drinkImg.src = drinkObj.strDrinkThumb
@@ -26,15 +26,15 @@ const drinkList = document.querySelector("#drink-list")
         drinkImg.alt = drinkObj.strDrink
         drinkImg.height = 200
         //append drink image to the drink Menu
-        drinkListDiv.append(drinkImg)
-        drinkList.append(drinkListDiv)
+        drinkListSpan.append(drinkImg)
+        drinkList.append(drinkListSpan)
         
         //! break out RenderImage function to create an event listener
         renderImage(drinkImg)
         
         // ! Add an event "mouseover" & "mouseout" event listener to drinkImg
-        mouseoverEvent(drinkListDiv,drinkObj)
-        mouseoutEvent(drinkListDiv,drinkObj)
+        mouseoverEvent(drinkListSpan,drinkObj,drinkImg)
+        mouseoutEvent(drinkListSpan,drinkObj,drinkImg)
     }
     
 //! This is the break out RenderImage function
@@ -47,30 +47,56 @@ const drinkList = document.querySelector("#drink-list")
     }
 
 //!Create a mouseover Event Listener that puts name in Image
-    const mouseoverEvent = (drinkListDiv, drinkObj) => {
-        drinkListDiv.addEventListener("mouseover", e => {
-            //create a div element within a specific id to go within image
+    const mouseoverEvent = (drinkListSpan, drinkObj,drinkImg) => {
+        drinkListSpan.addEventListener("mouseover", e => {
+            //create a span element within a specific id to go within image
             
-            const drinkName = document.createElement("div")
+            const drinkName = document.createElement("span")
             drinkName.textContent = drinkObj.strDrink
             drinkName.classList = "drinkTitle"
-            drinkName.id = `div${drinkObj.idDrink}`
+            drinkName.id = `span${drinkObj.idDrink}`
             
             
-            document.querySelector(`#img${drinkObj.idDrink}`).style.opacity = 30/100
+            drinkImg.style.opacity = 30/100
             document.querySelector(`#d${drinkObj.idDrink}`).append(drinkName)
         })
     }
 
     //!Create a mouseout Event Listener that puts name in Image
-    const mouseoutEvent = (drinkListDiv, drinkObj) => {
-        drinkListDiv.addEventListener("mouseout",e => {
-            //create a div element within a specific id to go within image
-            const drinkName = document.createElement("div")
+    const mouseoutEvent = (drinkListSpan, drinkObj, drinkImg) => {
+        drinkListSpan.addEventListener("mouseout",e => {
+            //create a span element within a specific id to go within image
+            const drinkName = document.createElement("span")
             drinkName.textContent = drinkObj.strDrink
             drinkName.classList = "drinkTitle"
             
             drinkImg.style.opacity = 100/100
-            document.querySelector(`#div${drinkObj.idDrink}`).remove()
+            document.querySelector(`#span${drinkObj.idDrink}`).remove()
         })
     }
+
+
+
+
+
+
+
+
+// Tom workspace
+function formSubmit(event) {
+    document.getElementById('drink-form')
+    formSubmit.addEventListener('submit', function(event) {
+    event.preventDefault()
+    console.log(event.target.name.value)
+
+    const addNewDrink = {
+        name: event.target.name.value,
+        image: event.target.image.value,
+        
+        }
+    formSubmit(addNewDrink)
+
+    });
+
+
+}
