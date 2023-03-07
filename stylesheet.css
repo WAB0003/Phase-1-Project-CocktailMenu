@@ -30,3 +30,13 @@ html, body {
     text-align: center;
     width: 600px;
 }
+
+#ingredients {
+    text-align: center;
+    vertical-align: center;
+}
+
+#ingredientsTitle {
+    text-align: center;
+    vertical-align: center;
+}

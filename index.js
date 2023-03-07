@@ -9,33 +9,35 @@ fetch(BASE_API)
         })
     });
 
-//*Move drinkList to be a global variable
-const drinkList = document.querySelector("#drink-list")
-    
-    const addToDrinkMenu = (drinkObj) => {
-        // console.log(drinkObj)
-        
-        //creating a variable that takes image info from object
-        const drinkListSpan = document.createElement("span")
-        drinkListSpan.classList = "drinks"
-        drinkListSpan.id = `d${drinkObj.idDrink}`
+document.getElementById("drink-form").addEventListener('submit', addNewDrink);
 
-        drinkImg = document.createElement("img")
-        drinkImg.src = drinkObj.strDrinkThumb
-        drinkImg.id = `img${drinkObj.idDrink}`
-        drinkImg.alt = drinkObj.strDrink
-        drinkImg.height = 200
-        //append drink image to the drink Menu
-        drinkListSpan.append(drinkImg)
-        drinkList.append(drinkListSpan)
+
+//*Create a Global Variable for the Drinklist area in our HTML
+const drinkList = document.querySelector("#drink-list")
+
+//!Create a function that takes and Drink Object and adds a it to the top Drink List
+const addToDrinkMenu = (drinkObj) => {
+    //Create a Span Element and assign and Id
+    const drinkListSpan = document.createElement("span")
+    drinkListSpan.classList = "drinks"
+    drinkListSpan.id = `d${drinkObj.idDrink}`
+    //Create an image variable in our HTML and set it to the Objects image source. Add Id, alt, and height.
+    drinkImg = document.createElement("img")
+    drinkImg.src = drinkObj.strDrinkThumb
+    drinkImg.id = `img${drinkObj.idDrink}`
+    drinkImg.alt = drinkObj.strDrink
+    drinkImg.height = 200
+    //append drink image to the drink Menu
+    drinkListSpan.append(drinkImg)
+    drinkList.append(drinkListSpan)
         
-        //! break out RenderImage function to create an event listener
-        renderImage(drinkImg,drinkObj)
+    //! break out RenderImage function to create an event listener
+    renderImage(drinkImg,drinkObj)
         
-        // ! Add an event "mouseover" & "mouseout" event listener to drinkImg
-        mouseoverEvent(drinkListSpan,drinkObj,drinkImg)
-        mouseoutEvent(drinkListSpan,drinkObj,drinkImg)
-    }
+    // ! Add an event "mouseover" & "mouseout" event listener to drinkImg
+    mouseoverEvent(drinkListSpan,drinkObj,drinkImg)
+    mouseoutEvent(drinkListSpan,drinkObj,drinkImg)
+}
     
 //! This is the break out RenderImage function
     const renderImage = (drinkImg,drinkObj) => {
@@ -55,30 +57,16 @@ const drinkList = document.querySelector("#drink-list")
             const ingredientArray = [drinkObj.strIngredient1, drinkObj.strIngredient2, drinkObj.strIngredient3, drinkObj.strIngredient4, drinkObj.strIngredient5, drinkObj.strIngredient6, drinkObj.strIngredient7]
             
             ingredientArray.forEach(ingredient => {
-                if (ingredient === null){
+                if ((ingredient === null)||(ingredient === "")){
                     return;
                 } else {
-                    const li = document.createElement("li")
-                    li.textContent = ingredient
-                    ingredientList.append(li)
+                    const div = document.createElement("div")
+                    div.textContent = ingredient
+                    ingredientList.append(div)
                 }
-            })
-        
-            
-            /*['strIngredient1', 'strIngredient2', 'strIngredient3', 'strIngredient4', 'strIngredient5', 'strIngredient6', 'strIngredient7']*/
-
-            //! Method 1 not working
-            /*for (let i = 0; i < ingredientArray.length; i++) {
-                const li = document.createElement('li');
-                li.textContent = ingredientArray[i];
-                ingredientList.appendChild(li);*/
-            //}
-
-            //! Method 2 not working
-            //ingredientList.textContent = ingredientArray
-
-        })   
-    }
+            });
+        });   
+    };
 
 //!Create a mouseover Event Listener that puts name in Image
     const mouseoverEvent = (drinkListSpan, drinkObj,drinkImg) => {
@@ -111,26 +99,55 @@ const drinkList = document.querySelector("#drink-list")
 
 
 
-
-
-
-
-
 // Tom workspace
-function formSubmit(event) {
-    document.getElementById('drink-form')
-    formSubmit.addEventListener('submit', function(event) {
-    event.preventDefault()
-    console.log(event.target.name.value)
-
-    const addNewDrink = {
-        name: event.target.name.value,
-        image: event.target.image.value,
-        
-        }
-    formSubmit(addNewDrink)
-
-    });
+  
+   
+ 
 
 
+function addNewDrink(event) {
+    event.preventDefault();
+    console.log(event.target["drink-name"].value)
+
+    const newDrink = {
+        strDrink: event.target["drink-name"].value,
+        strDrinkThumb: event.target["drink-image"].value,
+        strIngredient1: event.target["ingredient-1"].value,
+        strIngredient2: event.target["ingredient-2"].value,
+        strIngredient3: event.target["ingredient-3"].value,
+        strIngredient4: event.target["ingredient-4"].value,
+        strIngredient5: event.target["ingredient-5"].value,
+        strIngredient6: event.target["ingredient-6"].value,
+    }
+    console.log(newDrink)
+    addToDrinkMenu(newDrink)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*['strIngredient1', 'strIngredient2', 'strIngredient3', 'strIngredient4', 'strIngredient5', 'strIngredient6', 'strIngredient7']*/
+
+ //! Method 1 not working
+/*for (let i = 0; i < ingredientArray.length; i++) {
+     const li = document.createElement('li');
+    li.textContent = ingredientArray[i];
+    ingredientList.appendChild(li);*/
+//}
+
+//! Method 2 not working
+//ingredientList.textContent = ingredientArray
