@@ -30,7 +30,7 @@ const drinkList = document.querySelector("#drink-list")
         drinkList.append(drinkListSpan)
         
         //! break out RenderImage function to create an event listener
-        renderImage(drinkImg)
+        renderImage(drinkImg,drinkObj)
         
         // ! Add an event "mouseover" & "mouseout" event listener to drinkImg
         mouseoverEvent(drinkListSpan,drinkObj,drinkImg)
@@ -38,11 +38,45 @@ const drinkList = document.querySelector("#drink-list")
     }
     
 //! This is the break out RenderImage function
-    const renderImage = (drinkImg) => {
-        const centerImage = document.querySelector('#image')
+    const renderImage = (drinkImg,drinkObj) => {
+        const centerImage  = document.querySelector('#image')
         drinkImg.addEventListener('click', (event) => {
             
             centerImage.src = event.target.src 
+            //add Drink Name to detail section
+            const drinkName = document.querySelector("#name")
+
+            drinkName.textContent = drinkObj.strDrink
+
+            //add ingredients to the detail section
+            const ingredientList = document.querySelector("#ingredients")
+            ingredientList.innerHTML = "";
+            
+            const ingredientArray = [drinkObj.strIngredient1, drinkObj.strIngredient2, drinkObj.strIngredient3, drinkObj.strIngredient4, drinkObj.strIngredient5, drinkObj.strIngredient6, drinkObj.strIngredient7]
+            
+            ingredientArray.forEach(ingredient => {
+                if (ingredient === null){
+                    return;
+                } else {
+                    const li = document.createElement("li")
+                    li.textContent = ingredient
+                    ingredientList.append(li)
+                }
+            })
+        
+            
+            /*['strIngredient1', 'strIngredient2', 'strIngredient3', 'strIngredient4', 'strIngredient5', 'strIngredient6', 'strIngredient7']*/
+
+            //! Method 1 not working
+            /*for (let i = 0; i < ingredientArray.length; i++) {
+                const li = document.createElement('li');
+                li.textContent = ingredientArray[i];
+                ingredientList.appendChild(li);*/
+            //}
+
+            //! Method 2 not working
+            //ingredientList.textContent = ingredientArray
+
         })   
     }
 
