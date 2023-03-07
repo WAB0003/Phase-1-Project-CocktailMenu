@@ -43,7 +43,13 @@ const addToDrinkMenu = (drinkObj) => {
     const renderImage = (drinkImg,drinkObj) => {
         const centerImage  = document.querySelector('#image')
         drinkImg.addEventListener('click', (event) => {
+            //create an ingredients Title
+            // const detailInfo = document.querySelector("#detailed-info")
+            // const ingredientsTitle = document.createElement("h4")
+            // ingredientsTitle.textContent = "Ingredients"
+            // detailInfo.append(ingredientsTitle)
             
+
             centerImage.src = event.target.src 
             //add Drink Name to detail section
             const drinkName = document.querySelector("#name")
@@ -121,33 +127,10 @@ function addNewDrink(event) {
     }
     console.log(newDrink)
     addToDrinkMenu(newDrink)
+
+// function formReset(newDrink)
+// document.getElementById("reset-btn").value.reset();
+
+// formReset()
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*['strIngredient1', 'strIngredient2', 'strIngredient3', 'strIngredient4', 'strIngredient5', 'strIngredient6', 'strIngredient7']*/
-
- //! Method 1 not working
-/*for (let i = 0; i < ingredientArray.length; i++) {
-     const li = document.createElement('li');
-    li.textContent = ingredientArray[i];
-    ingredientList.appendChild(li);*/
-//}
-
-//! Method 2 not working
-//ingredientList.textContent = ingredientArray
