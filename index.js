@@ -22,6 +22,7 @@ const drinkList = document.querySelector("#drink-list")
 
         drinkImg = document.createElement("img")
         drinkImg.src = drinkObj.strDrinkThumb
+        drinkImg.id = `img${drinkObj.idDrink}`
         drinkImg.alt = drinkObj.strDrink
         drinkImg.height = 200
         //append drink image to the drink Menu
@@ -32,8 +33,8 @@ const drinkList = document.querySelector("#drink-list")
         renderImage(drinkImg)
         
         // ! Add an event "mouseover" & "mouseout" event listener to drinkImg
-        mouseoverEvent(drinkImg,drinkObj)
-        mouseoutEvent(drinkImg,drinkObj)
+        mouseoverEvent(drinkListDiv,drinkObj)
+        mouseoutEvent(drinkListDiv,drinkObj)
     }
     
 //! This is the break out RenderImage function
@@ -46,23 +47,24 @@ const drinkList = document.querySelector("#drink-list")
     }
 
 //!Create a mouseover Event Listener that puts name in Image
-    const mouseoverEvent = (drinkImg, drinkObj) => {
-        drinkImg.addEventListener("mouseover",e => {
+    const mouseoverEvent = (drinkListDiv, drinkObj) => {
+        drinkListDiv.addEventListener("mouseover", e => {
             //create a div element within a specific id to go within image
+            
             const drinkName = document.createElement("div")
             drinkName.textContent = drinkObj.strDrink
             drinkName.classList = "drinkTitle"
             drinkName.id = `div${drinkObj.idDrink}`
             
-
-            drinkImg.style.opacity = 30/100
+            
+            document.querySelector(`#img${drinkObj.idDrink}`).style.opacity = 30/100
             document.querySelector(`#d${drinkObj.idDrink}`).append(drinkName)
         })
     }
 
     //!Create a mouseout Event Listener that puts name in Image
-    const mouseoutEvent = (drinkImg, drinkObj) => {
-        drinkImg.addEventListener("mouseout",e => {
+    const mouseoutEvent = (drinkListDiv, drinkObj) => {
+        drinkListDiv.addEventListener("mouseout",e => {
             //create a div element within a specific id to go within image
             const drinkName = document.createElement("div")
             drinkName.textContent = drinkObj.strDrink
