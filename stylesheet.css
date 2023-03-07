@@ -1,3 +1,11 @@
-.drink-list {
-    position: relative
+.drinks {
+    position: relative;
+    float: left;
+    padding: 5px
+}
+
+.drinkTitle {
+    position: absolute;
+    left: 10%;
+    top: 10%;
 }

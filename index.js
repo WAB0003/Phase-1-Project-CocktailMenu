@@ -9,46 +9,68 @@ fetch(BASE_API)
         })
     });
 
+//*Move drinkList to be a global variable
+const drinkList = document.querySelector("#drink-list")
     
     const addToDrinkMenu = (drinkObj) => {
         // console.log(drinkObj)
-        const drinkList = document.querySelector("#drink-list")
         
         //creating a variable that takes image info from object
+        const drinkListDiv = document.createElement("div")
+        drinkListDiv.classList = "drinks"
+        drinkListDiv.id = `d${drinkObj.idDrink}`
+
         drinkImg = document.createElement("img")
         drinkImg.src = drinkObj.strDrinkThumb
-        drinkImg.id = drinkObj.idDrink
+        drinkImg.id = `img${drinkObj.idDrink}`
         drinkImg.alt = drinkObj.strDrink
         drinkImg.height = 200
         //append drink image to the drink Menu
-        drinkList.append(drinkImg)
+        drinkListDiv.append(drinkImg)
+        drinkList.append(drinkListDiv)
         
-        // break out RenderImage function to create an event listener
+        //! break out RenderImage function to create an event listener
         renderImage(drinkImg)
         
-        // ! Add an event "mouseover" event listener to drinkImg
-        mouseoverEventListener(drinkImg,drinkObj)
+        // ! Add an event "mouseover" & "mouseout" event listener to drinkImg
+        mouseoverEvent(drinkListDiv,drinkObj)
+        mouseoutEvent(drinkListDiv,drinkObj)
     }
     
-    //This is our function to add an event listener to display Large Image
+//! This is the break out RenderImage function
     const renderImage = (drinkImg) => {
         const centerImage = document.querySelector('#image')
         drinkImg.addEventListener('click', (event) => {
             
-            centerImage.src = event.target.src
-            
-            
-        })  
-        
+            centerImage.src = event.target.src 
+        })   
     }
-    
-    const mouseoverEventListener = (drinkObj) => {
-        drinkImg.addEventListener("mouseover",e => {
-            //create a div element within a specific id to go within image
-            drinkName = document.createElement("h1")
-            drinkName.textContent = drinkObj.strDrink
-            drinkName.class = "menuName"
-            // drinkList.append(drinkName)
-        })
 
+//!Create a mouseover Event Listener that puts name in Image
+    const mouseoverEvent = (drinkListDiv, drinkObj) => {
+        drinkListDiv.addEventListener("mouseover", e => {
+            //create a div element within a specific id to go within image
+            
+            const drinkName = document.createElement("div")
+            drinkName.textContent = drinkObj.strDrink
+            drinkName.classList = "drinkTitle"
+            drinkName.id = `div${drinkObj.idDrink}`
+            
+            
+            document.querySelector(`#img${drinkObj.idDrink}`).style.opacity = 30/100
+            document.querySelector(`#d${drinkObj.idDrink}`).append(drinkName)
+        })
+    }
+
+    //!Create a mouseout Event Listener that puts name in Image
+    const mouseoutEvent = (drinkListDiv, drinkObj) => {
+        drinkListDiv.addEventListener("mouseout",e => {
+            //create a div element within a specific id to go within image
+            const drinkName = document.createElement("div")
+            drinkName.textContent = drinkObj.strDrink
+            drinkName.classList = "drinkTitle"
+            
+            drinkImg.style.opacity = 100/100
+            document.querySelector(`#div${drinkObj.idDrink}`).remove()
+        })
     }
