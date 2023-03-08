@@ -1,5 +1,6 @@
 html, body {
     background-color: rgb(196, 255, 228);
+    text-align: center;
 }
 
 .logo {
@@ -39,4 +40,11 @@ html, body {
 #ingredientsTitle {
     text-align: center;
     vertical-align: center;
+}
+
+#drink-form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

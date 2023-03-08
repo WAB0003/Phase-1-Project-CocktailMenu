@@ -8,12 +8,13 @@ fetch(BASE_API)
             addToDrinkMenu(drinkObj)
         })
     });
-
-document.getElementById("drink-form").addEventListener('submit', addNewDrink);
-
-
+    
 //*Create a Global Variable for the Drinklist area in our HTML
 const drinkList = document.querySelector("#drink-list")
+const ingredientsTitle = document.querySelector("#ingredientsTitle")
+const ingredientList = document.querySelector("#ingredients")
+const drinkForm = document.getElementById("drink-form")
+const centerImage  = document.querySelector('#image')
 
 //!Create a function that takes and Drink Object and adds a it to the top Drink List
 const addToDrinkMenu = (drinkObj) => {
@@ -41,13 +42,10 @@ const addToDrinkMenu = (drinkObj) => {
     
 //! This is the break out RenderImage function
     const renderImage = (drinkImg,drinkObj) => {
-        const centerImage  = document.querySelector('#image')
         drinkImg.addEventListener('click', (event) => {
             //create an ingredients Title
-            // const detailInfo = document.querySelector("#detailed-info")
-            // const ingredientsTitle = document.createElement("h4")
-            // ingredientsTitle.textContent = "Ingredients"
-            // detailInfo.append(ingredientsTitle)
+            ingredientsTitle.textContent = "Ingredients"
+   
             
 
             centerImage.src = event.target.src 
@@ -57,7 +55,6 @@ const addToDrinkMenu = (drinkObj) => {
             drinkName.textContent = drinkObj.strDrink
 
             //add ingredients to the detail section
-            const ingredientList = document.querySelector("#ingredients")
             ingredientList.innerHTML = "";
             
             const ingredientArray = [drinkObj.strIngredient1, drinkObj.strIngredient2, drinkObj.strIngredient3, drinkObj.strIngredient4, drinkObj.strIngredient5, drinkObj.strIngredient6, drinkObj.strIngredient7]
@@ -103,7 +100,8 @@ const addToDrinkMenu = (drinkObj) => {
         })
     }
 
-
+//Create an Event Listener for the Form
+drinkForm.addEventListener('submit', addNewDrink);
 
 // Tom workspace
   
@@ -125,13 +123,19 @@ function addNewDrink(event) {
         strIngredient5: event.target["ingredient-5"].value,
         strIngredient6: event.target["ingredient-6"].value,
     }
+    drinkForm.reset()
     console.log(newDrink)
     addToDrinkMenu(newDrink)
-
-// function formReset(newDrink)
-// document.getElementById("reset-btn").value.reset();
-
-// formReset()
 }
+
+
+//! Creating reset button
+const resetBtn = document.getElementById("reset-btn")
+resetBtn.addEventListener("click",e => {
+    drinkForm.reset()
+    centerImage.src = "https://i2.wp.com/whatagirleats.com/wp-content/uploads/2017/06/Top-shot-Marg-Bar-2-hands.jpg"
+    ingredientsTitle.textContent= ""
+    ingredientList.innerHTML = ""
+})
 
  
