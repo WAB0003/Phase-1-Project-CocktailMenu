@@ -1,10 +1,14 @@
 html, body {
     background-color: rgb(196, 255, 228);
     text-align: center;
+    
 }
 
 .logo {
     text-align: center;
+    color: darkmagenta;
+    font-style: oblique;
+    text-decoration: underline;
 }
 
 .drinks {
@@ -15,13 +19,17 @@ html, body {
 .drinkTitle {
     position: absolute;
     left: 10%;
+    color: darkmagenta;
+    font-size: large;
+    font-style:oblique;
+    font-weight: bold;
 }
 
 #image {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
+    height: 300px;
 }
 
 #name {
