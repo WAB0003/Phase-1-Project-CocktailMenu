@@ -36,7 +36,7 @@ const addToDrinkMenu = (drinkObj) => {
     drinkListSpan.append(drinkImg)
     drinkList.append(drinkListSpan)
     
-    //!Create breakout functions that take information created in drink drink Menu and add Event Listeners to them:
+    //!Create breakout functions that take information created in drink Menu and add Event Listeners to them:
     //* break out RenderImage function to create an event listener
     renderImage(drinkImg,drinkObj)
     
