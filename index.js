@@ -103,12 +103,7 @@ const addToDrinkMenu = (drinkObj) => {
 //Create an Event Listener for the Form
 drinkForm.addEventListener('submit', addNewDrink);
 
-// Tom workspace
-  
-   
- 
-
-
+// Add drink form
 function addNewDrink(event) {
     event.preventDefault();
     console.log(event.target["drink-name"].value)
