@@ -9,13 +9,11 @@ The webpage displayed by the code herein is an online menu for cocktails. Upon o
 
 # How to use this Project
 As a user, I can:
-
-    - See five distinct margarita images at the top of the page.
-    - Hover my mouse over each margarita image and see its name appear over the image.
-    - Click on each image and see its name, larger image, and ingredients in the details section on the middle of the page, persisting until another cocktail image is clicked.
-    - See a form allowing me to enter the name, ingredients, and image file path of my own margarita I'd like to add to the collection.
-    - Use that form to submit my own margarita and see it added to the collection at the top of the page.
-        - (Note that if I refresh the page, my additional margarita will disappear.)
+* View five distinct margarita images at the top of the page upone opening.
+* Hover my mouse over each margarita image and see its name appear over the image.
+* Click on each image and see its name, larger image, and ingredients in the details section on the middle of the page, persisting until another cocktail image is clicked.
+* View and interact with a form at the bottom of the page. This form allows a user to enter the name, an image file path, and up to 6 ingredients used in the drink. After entering each ingredient, user shall be able to submit new drink to the menu above.
+* (Note that if I refresh the page, my additional margarita will disappear.)
 
 # Methodologies Employed
 We started the project employing three different event listener types:
